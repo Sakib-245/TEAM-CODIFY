@@ -1,0 +1,160 @@
+:root {
+    --primary: #6366f1;
+    --danger: #ef4444;
+    --bg-dark: #3f29e8;
+    --bg-active: #e0f2fe;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    
+}
+
+/* body.light-mode { background-color: var(--bg-active); } */
+
+.container { width: 100%; max-width: 550px; position: relative; z-index: 2; }
+
+.form-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 28px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.toggle-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 5px;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+
+.toggle-btn {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+    background: transparent;
+    color: var(--text-muted);
+}
+
+.toggle-btn.active {
+    background: white;
+    color: var(--primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.section-title { font-size: 1.5rem; color: var(--text-main); margin-bottom: 1.5rem; }
+
+.input-group { margin-bottom: 1.2rem; }
+label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus { 
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+.rating-box { margin-bottom: 1.5rem; background: #f8fafc; padding: 15px; border-radius: 12px; }
+.stars { color: #cbd5e1; font-size: 1.8rem; cursor: pointer; display: flex; gap: 5px; }
+.star.active { color: #fbbf24; }
+
+.counter { text-align: right; font-size: 0.75rem; color: var(--text-muted); margin-top: 5px; }
+
+.upload-trigger {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 14px;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: 0.2s;
+}
+
+.upload-trigger:hover { border-color: var(--primary); background: #f9faff; }
+
+.preview-grid { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+.preview-img { width: 80px; height: 80px; border-radius: 10px; position: relative; background-size: cover; background-position: center; border: 2px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.remove-img { position: absolute; top: -5px; right: -5px; background: var(--danger); color: #fff; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 12px; font-weight: bold; }
+
+.btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-danger { background: var(--danger); color: white; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.hidden { display: none; }
+
+.toast {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    background: #10b981; color: white; padding: 12px 24px; border-radius: 50px;
+    display: none; z-index: 1000; font-weight: 600;
+}
+
+
+.preview-grid {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    flex-wrap: wrap; /* Important for multiple images */
+}
+
+.preview-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.remove-img {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--danger);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

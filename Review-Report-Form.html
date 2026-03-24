@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Discovery | Feedback</title>
+    <link rel="stylesheet" href="Review-Report-Form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <div class="container">
+        <div class="form-card" id="main-card">
+            <div class="toggle-container">
+                <button class="toggle-btn active" id="tab-review" onclick="switchTab('review')">⭐ Review</button>
+                <button class="toggle-btn" id="tab-report" onclick="switchTab('report')">🚨 Report</button>
+            </div>
+
+            <form id="review-form">
+                <h2 class="section-title">Share Your Experience</h2>
+                <div class="input-group">
+                    <label>Event Name</label>
+                    <input type="text" id="rev-event-name" placeholder="e.g. Summer Jazz Night" required>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label>Your Name (Optional)</label>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                    <div class="input-group">
+                        <label>Date Attended</label>
+                        <input type="date" required>
+                    </div>
+                </div>
+                <div class="rating-box">
+                    <label>How would you rate it?</label>
+                    <div class="stars" id="star-rating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Review Details</label>
+                    <textarea id="review-text" maxlength="2000" placeholder="Tell us what you loved..." required></textarea>
+                    <div class="counter"><span id="review-char-count">0</span> / 2000</div>
+                </div>
+                <div class="upload-area">
+                    <label>📷 Add Photos (Optional, Max 3)</label>
+                    <input type="file" id="review-upload" accept="image/*" multiple hidden>
+                    <div class="upload-trigger" onclick="document.getElementById('review-upload').click()">
+                        <span>+ Click to select up to 3 images</span>
+                    </div>
+                    <div id="review-previews" class="preview-grid"></div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit-review" disabled>Post Review</button>
+            </form>
+
+            <form id="report-form" class="hidden">
+                <h2 class="section-title">Report an Issue</h2>
+                <div class="input-group">
+                    <label>What is the issue?</label>
+                    <select id="issue-type" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="fake">Fake Event</option>
+                        <option value="misleading">Misleading Information</option>
+                        <option value="spam">Spam / Irrelevant Content</option>
+                        <option value="safety">Safety Concern</option>
+                        <option value="inappropriate">Inappropriate Content</option>
+                        <option value="not-conducted">Event Not Conducted</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div id="other-issue-container" class="input-group hidden">
+                    <label>Specify Issue</label>
+                    <input type="text" id="other-issue-input" maxlength="100" placeholder="Describe category">
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label>Email (Optional)</label>
+                        <input type="email" placeholder="email@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label>Incident Date & Time</label>
+                        <input type="datetime-local" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Problem Description</label>
+                    <textarea id="report-text" maxlength="2000" placeholder="Describe the problem..." required></textarea>
+                    <div class="counter"><span id="report-char-count">0</span> / 2000</div>
+                </div>
+                <div class="upload-area">
+                    <label>📁 Evidence (Optional, Max 3)</label>
+                    <input type="file" id="report-upload" accept="image/*" multiple hidden>
+                    <div class="upload-trigger" onclick="document.getElementById('report-upload').click()">
+                        <span>+ Click to select up to 3 images</span>
+                    </div>
+                    <div id="report-previews" class="preview-grid"></div>
+                </div>
+                <button type="submit" class="btn btn-danger" id="submit-report">Submit Report</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Successfully Submitted!</div>
+
+    <script src="Review-Report-Form.js"></script>
+</body>
+</html>
