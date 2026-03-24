@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Submission</title>
+    <link rel="stylesheet" href="../css/event-form.css">
+</head>
+<body>
+
+<div class="nav-credits-badge">
+    🌱<p id="totalUserCredits"> 0</p>SDGs Credit 
+</div>
+
+<div class="container">
+    <header class="sticky-header">
+        <div class="welcome-banner">Welcome, <span id="welcomeUserName">User</span></div>
+        <h1>Submit Your Event</h1>
+        <p style="color: rgb(20, 131, 222);">Fill in the details below to register your event with us.</p>
+    </header>
+
+
+    <form id="eventForm" enctype="multipart/form-data">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="organizerName">Name of Organizer *</label>
+                <input type="text" id="organizerName" name="organizerName" required>
+            </div>
+            <div class="form-group">
+                <label for="organizationName">Organization Name *</label>
+                <input type="text" id="organizationName" name="organizationName" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="organizerEmail">Email *</label>
+                <input type="email" id="organizerEmail" name="organizerEmail" placeholder="example@org.com" required>
+            </div>
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number *</label>
+                <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="9876543210" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="eventName">Event Name *</label>
+                <input type="text" id="eventName" name="eventName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category *</label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Select a Category</option>
+                    <option value="Education">Education</option>
+                    <option value="Health">Health</option>
+                    <option value="Social">Social</option>
+                    <option value="NGO/Org">NGO/Org</option>
+                    <option value="Students">Students</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Political">Political</option>
+                    <option value="Exhibition">Exhibition</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="eventDescription">Event Overview / Description *</label>
+                <textarea id="eventDescription" name="eventDescription" rows="4" placeholder="Provide a detailed explanation of the event..." maxlength="5000" aria-describedby="charCount" required></textarea>
+                <small id="charCount" class="char-counter">0 / 5000 characters</small>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Event Location (Search or Click on Map)</label>
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <div id="map"></div>
+            <small>Drag marker or click to refine location. Search addresses below.</small>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Search or type address...">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city">
+            </div>
+        </div>
+       
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+
+        <div class="form-group">
+            <label for="googleFormLink">Registration Link (Google Forms)</label>
+            <input type="url" id="googleFormLink" name="googleFormLink" placeholder="https://forms.gle/..." pattern="https://.*" title="Must be a valid URL starting with https://" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="eventDate">Date *</label>
+                <input type="date" id="eventDate" name="eventDate" required>
+            </div>
+            <div class="form-group">
+                <label for="eventTime">Time *</label>
+                <input type="time" id="eventTime" name="eventTime" required>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="eventDuration">Event Time Duration (In Hours) *</label>
+                <input type="number" id="eventDuration" name="eventDuration" min="1" placeholder="e.g., 2 hours" required>
+            </div>
+            <div class="form-group">
+                <label for="availableSlots">Available Slots for Registration *</label>
+                <input type="number" id="availableSlots" name="availableSlots" min="1" placeholder="Maximum capacity" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="eventImage">Event Banner (Max 1MB, JPG/PNG) *</label>
+                <input type="file" id="eventImage" name="eventImage" accept="image/png, image/jpeg, image/jpg" required>
+                <p id="imageError" class="error-msg"></p>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventBrochure">Event Brochure (Max 5MB, PDF only) *</label>
+                <input type="file" id="eventBrochure" name="eventBrochure" accept="application/pdf" required>
+                <p id="brochureError" class="error-msg"></p>
+            </div>
+        </div>
+
+
+        <!-- Volunteer section - start -->
+
+        <div class="form-row">
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="needVolunteers" name="needVolunteers" value="true">
+                <label for="needVolunteers">Need Volunteers</label>
+            </div>
+        </div>
+       
+
+        <div id="volunteerFields" class="volunteer-section" style="display: none;">
+            <h3>Volunteer Requirements</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="volunteerSlots">Number of Volunteer Slots *</label>
+                    <input type="number" id="volunteerSlots" name="volunteerSlots" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="volunteerFormLink">Volunteer Registration Link *</label>
+                    <input type="url" id="volunteerFormLink" name="volunteerFormLink" placeholder="https://forms.gle/..." pattern="https://.*" title="Must be a valid URL starting with https://">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="volunteerBanner">Volunteer Banner/Poster (Max 1MB, JPG/PNG) *</label>
+                    <input type="file" id="volunteerBanner" name="volunteerBanner" accept="image/png, image/jpeg, image/jpg">
+                    <p id="volunteerBannerError" class="error-msg"></p>
+                </div>
+                <div class="form-group">
+                    <label for="volunteerBrochure">Volunteer Brochure (Max 5MB, PDF only) *</label>
+                    <input type="file" id="volunteerBrochure" name="volunteerBrochure" accept="application/pdf">
+                    <p id="volunteerBrochureError" class="error-msg"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volunteer section - End -->
+
+        <!-- Gamification - Start -->
+
+
+        <div class="impact-section">
+<div class="impact-header">
+        <h3>🌱 Impact & Sustainability</h3>
+        <div class="score-badge">EST. SCORE <span id="estScoreDisplay">+0</span></div>
+    </div>
+
+
+    <div class="impact-grid">
+        <div class="impact-category">
+            <h4>🎟️ Event Type</h4>
+            <div class="impact-cards-row">
+                <label class="impact-card">
+                    <input type="radio" name="ticketType" value="free" class="impact-calc" data-points="20" checked>
+                    <div class="card-content">
+                        <strong>Free</strong>
+                        <span>+20 Points</span>
+                    </div>
+                </label>
+                <label class="impact-card">
+                    <input type="radio" name="ticketType" value="paid" class="impact-calc" data-points="0">
+                    <div class="card-content">
+                        <strong>Paid</strong>
+                        <span>0 Points</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="impact-category">
+            <h4>👥 Inclusivity</h4>
+            <label class="impact-checkbox">
+                <input type="checkbox" name="womenOnly" class="impact-calc" data-points="15">
+                <span class="custom-check"></span>
+                <strong>Women-Only Session</strong>
+                <span class="pts">+15 pts</span>
+            </label>
+            <label class="impact-checkbox">
+                <input type="checkbox" name="accessibility" class="impact-calc" data-points="25">
+                <span class="custom-check"></span>
+                <div class="text-block">
+                    <strong>Accessibility Support</strong>
+                    <small> Supporting Disables</small>
+                </div>
+                <span class="pts">+25 pts</span>
+            </label>
+        </div>
+
+        <div class="impact-category">
+            <h4>🤝 Community & Economy</h4>
+            <label class="impact-checkbox">
+                <input type="checkbox" name="localVendor" class="impact-calc" data-points="30">
+                <span class="custom-check"></span>
+                <strong>Local Vendor Support</strong>
+                <span class="pts">+30 pts</span>
+            </label>
+            <label class="impact-checkbox">
+                <input type="checkbox" name="communityEngagement" class="impact-calc" data-points="20">
+                <span class="custom-check"></span>
+                 <div class="text-block">
+                    <strong>Local Community</strong>
+                    <small>Involvement of Local people</small>
+                </div>
+                <span class="pts">+20 pts</span>
+            </label>
+        </div>
+
+        <div class="impact-category">
+            <h4>🌲 Environmental</h4>
+            <label class="impact-checkbox eco-special">
+                <input type="checkbox" name="ecoFriendly" class="impact-calc" data-points="40">
+                <span class="custom-check"></span>
+                <div class="text-block">
+                    <strong>Eco-Friendly Event</strong>
+                    <small>Zero Pollution</small>
+                </div>
+                <span class="pts">+40 pts</span>
+            </label>
+        </div>
+    </div>
+    <input type="hidden" id="calculatedSdgScore" name="sdgScore" value="20">
+</div>
+
+
+
+        <!-- Gamification - End -->
+
+        <button type="submit" id="submitBtn">Submit Event</button>
+    </form>
+</div>
+
+<script src="../js/event-form.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARj4KbDS1TlRHS0Cm3EqFdXMDXy1qPCnY&libraries=places&callback=initMap"></script>
+
+</body>
+</html>
