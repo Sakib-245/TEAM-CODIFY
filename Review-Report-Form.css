@@ -1,7 +1,7 @@
 :root {
     --primary: #6366f1;
     --danger: #ef4444;
-    --bg-dark: #3f29e8;
+    --bg-dark: #5eb3f4bb;
     --bg-active: #e0f2fe;
     --card-bg: #ffffff;
     --text-main: #1e293b;
@@ -157,4 +157,66 @@ input:focus, textarea:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.back-btn-extreme {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    /* Increased Height and Black Background */
+    height: 50px; 
+    padding: 0 24px;
+    background-color: #000000;
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.back-btn-extreme:hover {
+    background-color: #1a1a1a; /* Slightly lighter black on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn-extreme svg {
+    stroke: #ffffff;
+}
+
+
+/* --- MOBILE CALENDAR FIX --- */
+@media (max-width: 550px) {
+    /* Stack the input fields (Email/Date) vertically to prevent overflow */
+    .input-row {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    /* Ensure the form card can handle the expanded content */
+    .form-card {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    /* Force the native datetime picker to respect container width */
+    input[type="datetime-local"] {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    /* Adjust the back button for better spacing on small screens */
+    .back-btn-extreme {
+        top: 10px;
+        left: 10px;
+    }
 }
