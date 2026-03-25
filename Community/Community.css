@@ -61,7 +61,7 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 10px;
+    gap: 5px;
     /* Pulls the links container to the absolute center of the navbar */
     position: absolute;   
     left: 50%;            
@@ -948,12 +948,9 @@ body {
 
     /* 1. Navbar & Hamburger Positioning */
     .navbar {
+        position: relative; /* Ensures absolute/fixed children align correctly */
         padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
-
     .menu-toggle {
         display: block !important;
         cursor: pointer;
@@ -977,26 +974,33 @@ body {
     /* 2. Full-Screen Menu */
     .nav-links {
         position: fixed;
-        left: -100%; 
-        top: 0;
-        width: 100%;
-        height: 100vh;
-        flex-direction: column;
-        justify-content: center;
+        left: -100%;       /* Hidden off-screen by default */
+        top: 0;            /* Occupy from the very top of the viewport */
+        width: 100vw;      /* Full viewport width */
+        height: 100vh;     /* Full viewport height */
         background-color: var(--text-white);
-        text-align: center;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center; /* Center links vertically */
+        align-items: center;     /* Center links horizontally */
         transition: 0.4s ease-in-out;
-        z-index: 2000;
-        gap: 30px;
+        z-index: 2000;     /* Stay above all other content */
+        padding: 0;
+        margin: 0;
+        gap: 40px;         /* Generous spacing for full-screen look */
     }
 
     .nav-links.nav-active {
-        left: 0;
+        left: 0 !important; /* Move to cover the whole screen */
     }
 
+    /* 4. Increase link size for better full-screen interaction */
     .nav-links li a {
-        font-size: 24px;
+        font-size: 28px;
         font-weight: 700;
+        color: var(--primary-color);
+        width: 100%;
+        text-align: center;
     }
 
     /* 3. Community Grid & Content Adjustment */
@@ -1082,5 +1086,57 @@ body {
     .mobile-scroll-gallery::-webkit-scrollbar-thumb {
         background: var(--primary-color);
         border-radius: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ... keep your existing navbar and menu-toggle code ... */
+
+    .nav-links {
+        /* 1. Force Fixed Positioning to break out of any parent containers */
+        position: fixed !important;
+        
+        /* 2. Set full viewport dimensions */
+        top: 0;
+        left: -100%;       /* Start hidden off-screen */
+        width: 100vw;      /* 100% Viewport Width */
+        height: 100vh;     /* 100% Viewport Height */
+        
+        /* 3. Style and Layout */
+        background-color: var(--text-white);
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        
+        /* 4. Reset desktop transforms and z-index */
+        transform: none !important; 
+        z-index: 2000;
+        transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+        
+        /* 5. Clean up any desktop padding/margins */
+        padding: 0;
+        margin: 0;
+    }
+
+    /* 6. Active state to bring the menu into full view */
+    .nav-links.nav-active {
+        left: 0 !important;
+    }
+
+    /* 7. Ensure links are large and centered */
+    .nav-links li {
+        width: 100%;
+        list-style: none;
+    }
+
+    .nav-links li a {
+        font-size: 28px;
+        font-weight: 700;
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: var(--primary-color);
     }
 }
