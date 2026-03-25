@@ -213,12 +213,14 @@ const navLinks = document.querySelector('.nav-links');
 
 if (mobileMenu && navLinks) {
     mobileMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
+        // PREVENTS THE MENU FROM CLOSING IMMEDIATELY
+        e.stopPropagation(); 
+        
         navLinks.classList.toggle('nav-active'); 
         mobileMenu.classList.toggle('is-active');
     });
 
-    // ADDED: Close menu when any internal link is clicked
+    // Close menu when clicking a link
     const allLinks = navLinks.querySelectorAll('a');
     allLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -228,7 +230,7 @@ if (mobileMenu && navLinks) {
     });
 }
 
-// Close menu when clicking outside or on a link
+// Close menu when clicking anywhere outside
 document.addEventListener('click', (e) => {
     if (navLinks.classList.contains('nav-active')) {
         if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
@@ -236,24 +238,4 @@ document.addEventListener('click', (e) => {
             mobileMenu.classList.remove('is-active');
         }
     }
-});
-
-
-
-/* --- AUTO-CLOSE MENU ON LINK CLICK --- */
-const navLinksItems = document.querySelectorAll('.nav-links a');
-
-navLinksItems.forEach(link => {
-    link.addEventListener('click', () => {
-        // Check if we are in mobile view before forcing close
-        if (window.innerWidth <= 768) {
-            const navContainer = document.querySelector('.nav-links');
-            const menuToggle = document.getElementById('mobile-menu');
-            
-            if (navContainer && menuToggle) {
-                navContainer.classList.remove('nav-active');
-                menuToggle.classList.remove('is-active');
-            }
-        }
-    });
 });
