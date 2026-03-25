@@ -17,7 +17,7 @@ const otherIssueContainer = document.getElementById('other-issue-container');
 const otherIssueInput = document.getElementById('other-issue-input');
 const reportText = document.getElementById('report-text');
 const submitReportBtn = document.getElementById('submit-report');
-
+const repEventName = document.getElementById('rep-event-name');
 issueSelect.addEventListener('change', function() {
     if (this.value === 'other') {
         otherIssueContainer.classList.remove('hidden');
@@ -30,11 +30,15 @@ issueSelect.addEventListener('change', function() {
     validateReport();
 });
 
+repEventName.addEventListener('input', validateReport);
 function validateReport() {
+    const isEventNameOk = repEventName.value.trim().length > 0; // New check
     const isCategoryOk = issueSelect.value !== "";
     const isTextOk = reportText.value.trim().length > 0;
     let isOtherOk = issueSelect.value === 'other' ? otherIssueInput.value.trim().length > 0 : true;
-    submitReportBtn.disabled = !(isCategoryOk && isTextOk && isOtherOk);
+    
+    // Include isEventNameOk in the final check
+    submitReportBtn.disabled = !(isEventNameOk && isCategoryOk && isTextOk && isOtherOk);
 }
 
 reportText.addEventListener('input', () => {
