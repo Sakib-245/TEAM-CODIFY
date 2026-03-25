@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventify - Landing Page</title>
+  
+  <link rel="stylesheet" href="Community.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="Community.js" defer></script>
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="logo">Eventify</div>
+    
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login-admin.html">Create Events</a></li>
+        <li><a href="find-events.html">Find Events</a></li>
+        <li><a href="#" class="active">Community</a></li>
+        <li><a href="#about-section">About</a></li>
+    </ul>
+</nav>
+
+
+
+<section class="community-header">
+    <div class="header-container">
+        <h2><strong>Help us keep the community safe and engaging — review your experience or report any concerns.</strong></h2>
+        <a href="Review-Report-Form.html" class="cta-button">Review/Report</a>
+    </div>
+</section>
+
+
+
+
+
+<section class="community-filters">
+    <div class="container-search">
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="communitySearch" placeholder="Search reviews or reports by event name...">
+        </div>
+
+        <div class="category-filters" id="communityFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="review">Reviews</button>
+            <button class="filter-btn" data-filter="report">Reports</button>
+        </div>
+    </div>
+</section>
+
+<section class="community-display">
+    <div class="container-search">
+        <div id="communityGrid" class="community-grid">
+            </div>
+        <div id="noResults" class="no-results hidden">
+            <i class="fas fa-folder-open"></i>
+            <p>No matches found for your search.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+
+
+
+
+
+    <footer class="footer-section" id="about-section">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="single-cta">
+                    <div class="cta-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="cta-text">
+                        <span>ABC Chowk Pune City</span>
+                        <strong>Maharashtra, India</strong>
+                    </div>
+                </div>
+                <div class="single-cta">
+                    <div class="cta-icon"><i class="fas fa-phone"></i></div>
+                    <div class="cta-text">
+                        <strong>+91 84355 12345</strong>
+                    </div>
+                </div>
+                <div class="single-cta">
+                    <div class="cta-icon"><i class="fas fa-envelope-open"></i></div>
+                    <div class="cta-text">
+                        <a href="mailto:codify502@gmail.com">codify502@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-widget">
+                    <div class="footer-heading">
+                        <h3>About the company</h3>
+                    </div>
+                    <div class="footer-text">
+                        <p>Our website is a centralized platform that showcases campaigns and events related to Cleanliness, Hackathons, Social Awareness, and Health. Users receive personalized notifications based on interests.</p>
+                    </div>
+                    <div class="footer-social-icon">
+                        
+    <a href="https://www.facebook.com/profile.php?id=61586509943733" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook"></i>
+    </a>
+
+   
+    <a href="https://www.instagram.com/eventifypage/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i></a>
+      
+    </a>
+
+    <a href="https://www.linkedin.com/in/eventify1" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    <a href="https://github.com/Kapilks123k/eventify" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+    </a>
+
+  </div> 
+  </div>
+  </div>
+  </footer>
+
+  
+
+ </body>
+</html>
