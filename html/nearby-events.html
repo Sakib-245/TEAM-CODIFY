@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Near You - Eventify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/./nearby-events.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARj4KbDS1TlRHS0Cm3EqFdXMDXy1qPCnY&libraries=geometry,places" defer></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Eventify</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./find-events.html">Find Events</a></li>
+            <li><a href="#map-section" class="active">Events Near You</a></li>
+            <li><a href="#about-section">About</a></li> 
+        </ul>
+        
+        <!-- <i class="fas fa-user-circle nav-profile-icon" id="navProfileIcon" title="Profile"></i> -->
+
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <main>
+        <section id="map-section" class="map-container">
+            <div id="googleMap"></div>
+            <div class="map-overlay-box" id="mapStatus">
+                <i class="fas fa-location-arrow"></i> Requesting your location...
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <div class="container">
+                <h1>Events Near Your Location</h1>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="nearbySearchInput" placeholder="Search nearby events by name">
+                </div>
+            </div>
+        </section>
+
+        <section class="events-display">
+            <div class="container">
+                <div id="nearbyEventsGrid" class="events-grid">
+                    </div>
+                <div id="noResults" class="no-results hidden">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>No nearby events found matching your criteria. Try expanding your search or checking other areas.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section" id="about-section">        <div class="footer-content">            <div class="footer-left">                <div class="single-cta">                    <div class="cta-icon"><i class="fas fa-map-marker-alt"></i></div>                    <div class="cta-text">                        <span>ABC Chowk Pune City</span>                        <strong>Maharashtra, India</strong>                    </div>                </div>                <div class="single-cta">                    <div class="cta-icon"><i class="fas fa-phone"></i></div>                    <div class="cta-text">                        <strong>+91 84355 12345</strong>                    </div>                </div>                <div class="single-cta">                    <div class="cta-icon"><i class="fas fa-envelope-open"></i></div>                    <div class="cta-text">                        <a href="mailto:codify502@gmail.com">codify502@gmail.com</a>                    </div>                </div>            </div>            <div class="footer-right">                <div class="footer-widget">                    <div class="footer-heading"><h3>About the company</h3></div>                    <div class="footer-text">                        <p>Our website is a centralized platform that showcases campaigns and events related to Cleanliness, Hackathons, Social Awareness, and Health. Users receive personalized notifications based on interests.</p>                    </div>                    <div class="footer-social-icon">                        <a href="https://github.com/Sakib-245/TEAM-CODIFY" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>                    </div>                </div>            </div>        </div>    </footer>
+
+    <script src="../js/./nearby-events.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

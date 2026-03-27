@@ -1,0 +1,1330 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* navbar */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; 
+}
+
+/* =========================================
+   1. ROOT VARIABLES & GLOBAL RESET
+   ========================================= */
+:root {
+    --primary-color: #2b6cb0;    
+    --hover-bg:      #edf2f7;    
+    --text-dark:     #4a5568;    
+    --text-white:    #ffffff;    
+    --bg-body:       #f8f9fa;    
+    --nav-height:    80px;       
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-body);
+}
+
+/* =========================================
+   2. NAVIGATION BAR
+   ========================================= */
+.navbar {
+    background-color: var(--text-white);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    /* This ensures the logo stays left, links stay center, and space stays right */
+    justify-content: space-between; 
+    padding: 0 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative; /* Changed to sticky for better desktop UX */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    width: 150px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    /* This pushes the links to the absolute center of the navbar flex container */
+    margin: 0 auto; 
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+
+.nav-extra {
+    /* Set this to the exact same width as your .logo (150px) 
+       to act as a balanced counter-weight for perfect centering */
+    width: 150px; 
+    display: block;
+}
+
+/* MOBILE MENU TOGGLE (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+
+/* Image 100% Width with Cover */
+.hero-section {
+    width: 100%;
+    height: 75vh;
+    position: relative; /* Required for the pseudo-element to stay inside */
+    overflow: hidden;   /* Prevents the blurred edges from leaking out */
+    background-color: #000;
+}
+
+/* The Blurred Background Layer */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/images/Dj.jpeg"); /* Same image source */
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.7); /* Adjust blur and darkness here */
+    transform: scale(1.1); /* Prevents white edges caused by blurring */
+    z-index: 1;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    position: relative; /* Keeps it above the blurred background */
+    z-index: 2;         /* Ensures it sits on top */
+}
+
+.container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* This wrapper ensures the description starts at the same left point as the title */
+.description-full-width {
+    width: 100%;
+    padding: 0 40px; /* Matches the container padding */
+}
+
+/* Title moved to Left side */
+.details-column {
+    flex: 2;
+    text-align: left;
+    padding-left:0;
+}
+
+.event-title {
+    font-size: 48px;
+    padding-top: 40px;
+    margin-left: 0;
+    color: #1e0a3c;
+    font-weight: 800;
+}
+
+.org-name {
+    font-size: 18px;
+    color: #6f7287;
+    margin-bottom: 30px;
+}
+
+.event-meta {
+    margin-top: -15px; /* Pulls it closer to the 'By...' text */
+    margin-bottom: 20px;
+    color: #1e0a3c;
+}
+
+/* .event-meta p {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between icon and text */
+/* } */
+
+/* .event-meta i {
+    color: #6f7287; /* Subdued color for icons */
+    /* width: 20px;    Keeps icons aligned vertically */
+/* } */ */ */
+/* Existing meta styles */
+.event-meta p {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* *** ADD THIS SPECIFIC COLOR RULE FOR THE ICONS *** */
+.event-meta i {
+    color: #6f7287; /* Matches your existing location and calendar icons */
+    width: 20px;    
+    text-align: center;
+}
+
+.organizer-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 25px;
+    width: fit-content;
+    min-width: 350px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Soft, modern shadow */
+    border: 1px solid #f0f0f0;
+}
+
+.organizer-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.organizer-logo img {
+    width: 80%;
+    object-fit: contain;
+}
+
+.organizer-details h3 {
+    font-size: 22px;
+   
+    margin: 0 0 10px 0;
+    border: none; /* Resetting your global h3 border */
+    padding: 0;
+}
+
+.organizer-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    width:250px;
+    height: 60px;
+
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6f7287;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e0a3c;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 50px;
+    color: Black;
+    background-color: black;
+}
+
+
+.event-description {
+    margin-top: 40px;
+    border-top: 1px solid #eeedf2;
+    padding-top: 30px;
+    
+    /* HERE IS THE KEY: 80% of the entire page width */
+    width: 100%; 
+}
+
+
+/* Base style for the text */
+#eventText {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    width: 100%; /* Ensures text expands to the full 80% */
+}
+
+.top-row-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    width: 100%;
+}
+
+.about-section-full {
+    padding: 0 40px;
+    margin-top: 40px;
+    width: 80%; /* Now this refers to 80% of the screen, filling the green area */
+}
+
+.about-section-full h3 {
+    border-top: 1px solid #eeedf2;
+    padding-top: 30px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+/* Truncation logic */
+.collapsed {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Spacing between PDF and Bookmark */
+    margin-bottom: 20px; /* Space between icons and Register button */
+}
+
+/* PDF Icon Styling */
+.pdf-icon {
+    font-size: 38px;
+    color: #d81818; /* Standard PDF Red */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.pdf-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Bookmark Icon Styling (Updated) */
+.bookmark-icon {
+    font-size: 38px;
+    cursor: pointer;
+    color: #6f7287;
+    transition: color 0.3s ease;
+    margin-bottom: 0; /* Margin removed as the group handles spacing now */
+}
+/* Calendar Plus Icon Styling (Matches the blue in your image) */
+.calendar-icon {
+    font-size: 38px;
+    color: #2b6cb0; /* Matches your primary blue theme color */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.calendar-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Existing PDF Icon Styling below... */
+.pdf-icon {
+    font-size: 38px;
+    color: #d81818;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-bottom: 0 !important;
+}
+.expanded {
+    display: block;
+}
+
+.toggle-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #3d64ff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toggle-link:hover {
+    text-decoration: underline;
+}
+
+.read-more-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #3d64ff;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.event-description,h3{
+ font-size: 35px;
+ width:75%;
+}
+.event-description,p{
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    font-size:20px;
+    width:80%;
+}
+hr{
+    width:80%;
+
+}
+/* Interaction Sidebar (Right Aligned) */
+.interaction-sidebar {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Keeps everything on the right */
+    padding-top: 50px;
+}
+
+.action-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds a small space between the two buttons */
+    align-items: flex-end; /* Keeps both buttons aligned to the right */
+}
+
+/* This is the key for horizontal alignment */
+.icon-group {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment */
+    align-items: center; /* Vertical center alignment between the two icons */
+    gap: 25px; /* Spacing between PDF and Bookmark */
+    margin-bottom: 10px; /* Space between the icon row and the button */
+}
+
+
+.pdf-icon {
+    font-size: 38px;
+    color: #d81818; /* PDF Red */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-bottom: 0 !important; /* Removes the 40px margin from your old code */
+}
+/* Big Bookmark Icon */
+.bookmark-icon {
+    font-size: 38px;
+    cursor: pointer;
+    color: #6f7287;
+    transition: all 0.3s ease;
+    margin-bottom: 0 !important; /* Removes the 40px margin from your old code */
+}
+
+
+
+
+.bookmark-icon.active {
+    color: #d81818;
+    font-weight: 900;
+}
+
+/* Register Button Right Aligned */
+/* .register-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 16px 50px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 300px;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    box-shadow: 0 18px 20px rgba(0, 0, 0, 0.1), 0 18px 25px rgba(0, 0, 0, 0.08);
+} */
+
+
+/* New Volunteer Button Styles */
+.volunteer-btn {
+    background-color:#0e5db6; /* Blue background */
+    color: white;
+    border: none;
+    padding: 16px 20px; /* Reduced horizontal padding to fit longer text */
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 300px; /* Same width as Register button */
+    box-shadow: 0 18px 20px rgba(0, 0, 0, 0.1), 0 18px 25px rgba(0, 0, 0, 0.08);
+}
+.volunteer-btn.applied {
+    background-color: #6c757d; /* Grey */
+    cursor: default;
+    transform: none; /* Removes the hover lift */
+    /* box-shadow: none; Optional: flattens the button once used */
+}
+/* Hover effect for the new button */
+/* .volunteer-btn:hover {
+    background-color: #0056b3;
+} */
+
+.register-btn.registered {
+    background-color: #6c757d;
+    cursor: default;
+}
+
+.event-description {
+    margin-top: 40px;
+    border-top: 1px solid #eeedf2;
+    padding-top: 30px;
+}
+
+/* Responsive fix for mobile */
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .interaction-sidebar { justify-content: center; }
+    .action-wrapper { align-items: center; }
+}
+
+
+
+/* map */
+
+/* Styling for the new Location Section */
+.location-section-full {
+    width: 100%;
+    padding: 200px 200px; /* Generous spacing */
+    height:700px;
+    background-color: #f8f8f9; /* Light grey background for sectioning */
+    margin-top: 60px; /* Space from the 'About' section */
+}
+
+.location-container {
+    display: flex;
+    flex-direction: column; /* Stacks text and map vertically */
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.location-info {
+    width: 100%; /* Ensures the info area uses full container width */
+}
+
+
+
+/* Square Map Styling */
+.map-wrapper {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important; /* Centers the map horizontally */
+        margin: 20px 0 !important;
+        flex: none !important; /* Overrides desktop flex: 1 */
+    }
+
+    .map-placeholder {
+        width: 90% !important; /* Scale for small screens */
+        max-width: 400px;
+        height: 300px !important;
+        margin: 0 auto !important;
+        border-radius: 12px;
+    }
+
+.map-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Changed to cover to fill the square properly */
+    display: block;
+    filter: blur(2px) grayscale(10%);
+}
+
+/* Ensure section divider is below the map */
+.section-divider {
+    width: 80%;
+    border: 0;
+    border-top: 1px solid #eeedf2;
+    margin-top: 20px;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 480px) {
+    .map-placeholder {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.location-info h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.address-group h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.address-group p {
+    font-size: 16px;
+    color: #6f7287;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.section-divider {
+    border: 0;
+    border-top: 1px solid #eeedf2;
+    margin-bottom: 30px;
+}
+
+
+/* Transport List with Icons */
+.transport-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.transport-group li {
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between icon and text */
+}
+/*  */
+.transport-group i {
+    color: #3d64ff; /* Use blue from bookmark for icons */
+    width: 20px; /* Center icons vertically */
+} */
+
+/* Right Column: Map Styling */
+.map-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: left;
+}
+
+.map-placeholder {
+    width: 40%;
+    height: 400px; /* Predefined height */
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative; /* For button placement */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.map-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Fill container without stretching */
+    display: block;
+    filter: blur(2px) grayscale(10%); /* Add blur and slight grayscale for effect */
+}
+
+/* The 'Show map' button */
+.show-map-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centering trick */
+    background-color: white;
+    color: #1e0a3c;
+    border: 1px solid #eeedf2;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.show-map-btn:hover {
+    background-color: #f8f8f9;
+    border-color: #d1d2d3;
+}
+
+
+/* dashboard */
+.dashboard-section {
+    padding: 20px 40px;
+    margin-top: 20px;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 30px;
+    margin-right: 15px;
+    opacity: 0.8;
+}
+
+.stat-content h3 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.stat-content p {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Dashboard Colors */
+.blue   { background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); }
+.purple { background: linear-gradient(135deg, #b827fc 0%, #2c033d 100%); }
+.orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.green  { background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%); }
+.red    { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%); }
+
+@media (max-width: 768px) {
+    .dashboard-section { padding: 10px 20px; }
+    .stat-card { min-width: 100%; }
+}
+
+
+/* graph */
+.chart-section {
+    padding: 20px 40px;
+    margin-bottom: 40px;
+}
+
+.chart-container {
+    width: 80%; /* Aligns with your About section width */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eeedf2;
+    height: 400px; /* Fixed height for better visibility */
+}
+
+.chart-container h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #1e0a3c;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%;
+        padding: 15px;
+        height: 300px;
+    }
+}
+
+
+.location-section-full {
+    width: 100%;
+    padding: 60px 40px;
+    background-color: #f8f8f9;
+    margin-bottom: 80px; /* Space added here */
+}
+
+
+/* footer */
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.footer-section {
+    background: #212529;
+    padding: 70px 0;
+    width: 100%;
+    color: #ffffff;
+    display: block;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-bottom: 0; /* Ensures no gap at the bottom */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 30px;
+}
+
+.single-cta {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.cta-icon {
+    margin-right: 20px;
+}
+
+.cta-icon i {
+    color: #fff;
+    font-size: 20px;
+    background-color: #33383c;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.cta-text {
+    padding-top: 2px;
+}
+
+.cta-text span {
+    font-size: 15px;
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.cta-text strong {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+}
+
+.cta-text a {
+    color: #4a8adb;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.cta-text a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-right {
+    flex: 1;
+    min-width: 300px;
+    padding-left: 50px;
+}
+
+.footer-widget .footer-heading h3 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.footer-text p {
+    color: #8f9296;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.footer-social-icon {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-icon a {
+    color: #fff;
+    font-size: 18px;
+    background-color: #33383c;
+    height: 45px;
+    width: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-social-icon a:hover {
+    background-color: #4a8adb;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+
+
+
+/* =========================================
+   UPDATED NAVBAR (Hamburger on Right)
+   ========================================= */
+.navbar {
+    background-color: var(--text-white);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Logo Left, Menu Right */
+    padding: 0 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+/* Ensure Logo stays left */
+.logo {
+    flex-grow: 0;
+}
+
+/* Push Hamburger to the right */
+.menu-toggle {
+    display: none; 
+    order: 2; /* Ensures it stays at the end of the flex container */
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* /* =========================================
+   MOBILE RESPONSIVENESS (Centered Content)
+   ========================================= */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .menu-toggle {
+        display: flex; 
+    }
+
+    .nav-links  {
+        display: none; 
+        position: fixed;
+        right: 0;
+        /* THE FIX: Change top to 80px (or match your navbar height exactly) */
+        top: 80px; 
+        width: 100%;
+        /* Adjust height to account for the new top position */
+        height: calc(100vh - 80px); 
+        background-color: #ffffff !important; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 0; /* Removes gap above the first link */
+        z-index: 1001;
+        overflow-y: auto; 
+    }
+
+    .nav-links.nav-active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 10px 0; 
+    }
+
+    .nav-links a {
+       
+        font-size: 24px !important; 
+        font-weight: 700 !important;
+        padding: 12px 0 !important;
+        width: 100%;
+        display: block;
+        text-align: center;
+        color: var(--text-dark);
+    }
+
+    .nav-links a:active {
+        transform: scale(1.1);
+        color: var(--primary-color);
+    }
+    .nav-links li:first-child {
+        margin-top: 20px;
+    }
+
+} 
+
+   /* }   CENTER ALL CONTENT
+    .top-row-container, 
+    .container, 
+    .details-column, 
+    .interaction-sidebar, 
+    .about-section-full,
+    .location-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        padding: 20px !important;
+    } */
+
+    /* .event-title {
+        font-size: 32px;
+        padding-top: 20px;
+    }
+
+    .organizer-box {
+        margin: 25px auto; 
+        min-width: 100%;
+    } */
+
+    /* .action-wrapper {
+        align-items: center !important;
+        width: 100%;
+    }
+
+    .event-meta p {
+        justify-content: center;
+    } */
+
+    /* CHART FIX */
+    /* .chart-section {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .chart-container {
+        width: 95% !important; 
+        margin: 0 auto;
+        height: 350px; 
+    } */
+
+    /* .event-description, .event-description p, hr {
+        width: 100% !important;
+    } */
+/* } */
+
+/* Hamburger Animation */
+/* .is-active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.is-active .bar:nth-child(2) { opacity: 0; }
+.is-active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); } */
+
+
+
+/* =========================================
+   FINAL GRAPH ALIGNMENT (Mobile Fix)
+   ========================================= */
+@media (max-width: 992px) {
+    /* Ensures the section doesn't collapse or overflow at the bottom */
+    .chart-section {
+        width: 100% !important;
+        padding: 20px 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        overflow: hidden !important; /* Prevents graph from bleeding out */
+    }
+
+    .chart-container {
+        width: 95% !important; 
+        max-width: 100% !important;
+        height: 300px !important; /* Slightly reduced height to fit screens better */
+        margin: 0 auto 30px auto !important; /* Added bottom margin */
+        padding: 10px !important;
+        background-color: #ffffff;
+        border-radius: 12px;
+        position: relative !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Forces the Canvas to stay inside the container */
+    #weeklyRegistrationChart {
+        max-width: 100% !important;
+        max-height: 100% !important;
+        display: block !important;
+    }
+}
+
+/* =========================================
+   MOBILE FIX: CHART & NO HORIZONTAL SCROLL
+   ========================================= */
+@media (max-width: 992px) {
+    /* Prevents the entire page from having a horizontal scrollbar */
+    html, body {
+        width: 100%;
+        overflow-x: hidden !important;
+        position: relative;
+    }
+
+    /* Outer Section: Ensures no side-bleeding */
+    .chart-section {
+        width: 100% !important;
+        padding: 20px 15px !important;
+        display: flex !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* The White Card: Locks height and width */
+    .chart-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 320px !important; /* Fixed height to stop bottom bleeding */
+        margin: 0 auto !important;
+        padding: 10px !important;
+        background-color: #ffffff;
+        border-radius: 12px;
+        position: relative !important;
+        overflow: hidden !important; /* Forces the graph to stay inside */
+        box-sizing: border-box !important;
+    }
+
+    /* The Graph Canvas: Pins the scale to the box */
+    #weeklyRegistrationChart {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 250px !important; /* Explicitly limits the graph height */
+    }
+}
+
+
+
+/* =========================================
+   CENTER TABLON GLOBAL BOX (Mobile Only)
+   ========================================= */
+@media (max-width: 992px) {
+    /* Targets the box containing Tablon Global */
+    .organizer-box {
+        display: flex !important;
+        flex-direction: column !important; /* Stacks logo and text vertically */
+        align-items: center !important;    /* Centers items horizontally */
+        text-align: center !important;      /* Centers text within the box */
+        margin: 30px auto !important;      /* Centers the entire box on the page */
+        width: 90% !important;             /* Adjusts width for mobile screens */
+        min-width: unset !important;       /* Removes the desktop minimum width */
+        padding: 20px !important;
+    }
+
+    /* Centers the logo specifically */
+    .organizer-logo {
+        margin-right: 0 !important;        /* Removes the desktop right-side margin */
+        margin-bottom: 15px !important;    /* Adds space below logo in vertical stack */
+    }
+
+    /* Centers the internal stats row */
+    .organizer-stats {
+        justify-content: center !important;
+        width: 100% !important;
+        margin-top: 15px !important;
+    }
+}
+
+/* =========================================
+   FIXED BOTTOM CUT-OFF FOR GRAPH (Mobile)
+   ========================================= */
+@media (max-width: 992px) {
+    .chart-section {
+        width: 100% !important;
+        padding: 20px 10px 60px 10px !important; /* Added 60px bottom padding */
+        display: flex !important;
+        justify-content: center !important;
+        overflow: visible !important; /* Allow labels to be seen if they bleed */
+    }
+
+    .chart-container {
+        width: 95% !important;
+        height: 380px !important; /* Increased height to fit labels */
+        margin: 0 auto !important;
+        padding: 15px 15px 40px 15px !important; /* Extra padding inside the white box */
+        background-color: #ffffff;
+        border-radius: 12px;
+        position: relative !important;
+        box-sizing: border-box !important;
+    }
+
+    #weeklyRegistrationChart {
+        display: block !important;
+        max-width: 100% !important;
+        max-height: 260px !important; /* Force graph area to stop higher up */
+    }
+}
+
+/* =========================================
+   MOBILE ONLY: TITLE & ORGANIZER BOX
+   ========================================= */
+@media (max-width: 992px) {
+    /* 1. Center the Event Title */
+    .event-title {
+        text-align: center !important;
+        font-size: 34px !important; /* Slightly smaller for better mobile fit */
+        padding: 20px 10px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        word-wrap: break-word !important; /* Prevents long words from bleeding out */
+    }
+
+    /* 2. Center the Organizer Box (Tablon Global) */
+    .organizer-box {
+        display: flex !important;
+        flex-direction: column !important; /* Stacks logo above text */
+        align-items: center !important;    /* Centers items horizontally */
+        text-align: center !important;      /* Centers text inside the box */
+        margin: 25px auto !important;      /* Centers the box on the page */
+        width: 90% !important;             /* Takes up most of the screen width */
+        min-width: unset !important;       /* Removes desktop minimum width */
+        padding: 20px !important;
+    }
+
+    /* Removes the desktop right margin from the logo */
+    .organizer-logo {
+        margin-right: 0 !important;
+        margin-bottom: 15px !important; /* Adds space below logo in vertical stack */
+    }
+
+    /* 3. Center the Organizer Stats (Events & Established) */
+    .organizer-stats {
+        justify-content: center !important; /* Centers the stats row */
+        width: 100% !important;
+        margin: 15px 0 0 0 !important;
+        height: auto !important; /* Allows it to grow if needed */
+    }
+
+    /* Ensures the individual stat items align correctly */
+    .stat-item {
+        align-items: center !important;
+    }
+}
+
+
+/* =========================================
+   MOBILE ONLY: BUTTONS BELOW ORGANIZER BOX
+   ========================================= */
+@media (max-width: 992px) {
+    /* 1. Set the container to flex so we can use the 'order' property */
+    .top-row-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 2. Title and organizer details stay at the top (Order 1) */
+    .details-column {
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 3. Push the sidebar/buttons below the organizer box (Order 2) */
+    .interaction-sidebar {
+        order: 2 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        padding-top: 20px !important; /* Space between box and buttons */
+    }
+
+    /* 4. Ensure buttons are centered and stacked */
+    .action-wrapper {
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .register-btn, .volunteer-btn {
+        width: 90% !important; /* Makes buttons prominent on mobile */
+        max-width: 350px !important;
+        margin: 10px auto !important;
+    }
+
+    /* 5. Icon group centering */
+    .icon-group {
+        justify-content: center !important;
+        margin-bottom: 15px !important;
+    }
+}
+
+
+/* =========================================
+   MOBILE ONLY: REGISTER BUTTON TEXT SPACING
+   ========================================= */
+@media (max-width: 992px) {
+    .register-btn {
+        /* Reduces the space between letters to fit the text on one line */
+        letter-spacing: 0px !important; 
+        
+        /* Slightly reduces horizontal padding to ensure it fits narrow screens */
+        padding: 16px 20px !important; 
+        
+        /* Ensures the font size is appropriate for the button width */
+        font-size: 17px !important; 
+        
+        /* Keeps the button centered as established in previous steps */
+        margin: 10px auto !important;
+        width: 90% !important;
+        max-width: 350px !important;
+    }
+}

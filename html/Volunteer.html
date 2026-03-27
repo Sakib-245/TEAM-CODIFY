@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Section - Eventify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/Volunteer.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Eventify</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./find-events.html">Find Events</a></li> 
+            <li><a href="#12" class="active">Volunteer</a></li>
+            <li><a href="./Community.html">Community</a></li> 
+            <li><a href="#about-section">About</a></li> 
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    <header class="1" id="12"></header>
+    
+    <main>
+        <section class="filter-section" id="#top1">
+            <div class="container">
+                <h1>Volunteer Events Nearby</h1>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search events by name, city or category...">
+                </div>
+
+                <div class="category-filters" id="categoryFilters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="Students">Students</button>
+                    <button class="filter-btn" data-category="Exhibition">Exhibition</button>
+                    <button class="filter-btn" data-category="Social">Social</button>
+                    <button class="filter-btn" data-category="NGO/Org">NGO/Org</button>
+                    <button class="filter-btn" data-category="Health">Health</button>
+                    <button class="filter-btn" data-category="Education">Education</button>
+                    <button class="filter-btn" data-category="Marketing">Marketing</button>
+                    <button class="filter-btn" data-category="Political">Political</button>
+                    <button class="filter-btn" data-category="Other">Other</button>
+                    <button class="filter-btn" data-category="Applied Events">Applied Events</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="events-display">
+            <div class="container">
+                <div id="eventsGrid" class="events-grid"></div>
+                
+                <div id="noResults" class="no-results hidden">
+                    <i class="fas fa-folder-open"></i>
+                    <p>No events found matching your criteria.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="control-flow-section" id="11">
+            <div class="flow-container">
+                <h2 class="section-title">User Control Flow</h2>
+                <hr class="separator-line">
+                <div class="flow-cards-wrapper">
+                    <div class="flow-card">
+                        <div class="icon-box-flow"><i class="fas fa-hand-pointer"></i></div>
+                        <div class="text-content">
+                            <h3>1. Apply for Volunteering</h3>
+                            <p>The volunteer browses the event card and if interested, simply clicks the "Apply" button.</p>
+                        </div>
+                    </div>
+                    <div class="flow-card">
+                        <div class="icon-box-flow"><i class="fas fa-file-alt"></i></div>
+                        <div class="text-content">
+                            <h3>2. Fill the Form</h3>
+                            <p>After clicking apply, the volunteer is redirected to a Form where they provide their details.</p>
+                        </div>
+                    </div>
+                    <div class="flow-card">
+                        <div class="icon-box-flow"><i class="fas fa-user-check"></i></div>
+                        <div class="text-content">
+                            <h3>3. Organizer Selection</h3>
+                            <p>If the volunteer is suitable, the organizer contacts them personally and confirms their participation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section" id="20">
+            <div class="faq-container-wide">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <hr class="separator-line">
+                <div class="faq-wrapper">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is volunteering free or do I need to pay any fee?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Volunteering is completely free of cost. Volunteers help organizers manage the event and support different activities.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How will I know if I am selected?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>After reviewing the form responses, the event organizer will contact selected volunteers personally through phone or email.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I volunteer for multiple events?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, you can apply for multiple events if you are available and interested.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section" id="about-section">        <div class="footer-content">            <div class="footer-left">                <div class="single-cta">                    <div class="cta-icon"><i class="fas fa-map-marker-alt"></i></div>                    <div class="cta-text">                        <span>ABC Chowk Pune City</span>                        <strong>Maharashtra, India</strong>                    </div>                </div>                <div class="single-cta">                    <div class="cta-icon"><i class="fas fa-phone"></i></div>                    <div class="cta-text">                        <strong>+91 84355 12345</strong>                    </div>                </div>                <div class="single-cta">                    <div class="cta-icon"><i class="fas fa-envelope-open"></i></div>                    <div class="cta-text">                        <a href="mailto:codify502@gmail.com">codify502@gmail.com</a>                    </div>                </div>            </div>            <div class="footer-right">                <div class="footer-widget">                    <div class="footer-heading"><h3>About the company</h3></div>                    <div class="footer-text">                        <p>Our website is a centralized platform that showcases campaigns and events related to Cleanliness, Hackathons, Social Awareness, and Health. Users receive personalized notifications based on interests.</p>                    </div>                    <div class="footer-social-icon">                        <a href="https://github.com/Sakib-245/TEAM-CODIFY" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>                    </div>                </div>            </div>        </div>    </footer>
+
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">x</span>
+        <img class="modal-content" id="fullImage">
+        <div id="caption"></div>
+    </div>
+    
+    <div id="loginModal" class="login-modal-overlay">
+        <div class="login-modal-content">
+            <span class="close-login-modal">x</span>
+            <div class="modal-header">
+                <h2>Login Required</h2>
+                <p>Please sign in to apply as a volunteer.</p>
+            </div>
+            <form id="modal-login-form">
+                <div class="input_box">
+                    <input type="email" id="modal-email" required placeholder="Email Address" />
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="input_box">
+                    <input type="password" id="modal-password" required placeholder="Password" />
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <button class="submit-btn" type="submit">Sign In (Demo Mode)</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="sdgModal" class="sdg-modal">
+        <div class="sdg-modal-content">
+            <span class="close-sdg-modal">x</span>
+            <h2 id="sdgModalTitle">SDG Badge</h2>
+            <div class="sdg-icon-wrapper">
+                <i id="sdgModalIcon" class="fas fa-certificate"></i>
+            </div>
+            <p id="sdgModalMessage">Event SDG information goes here.</p>
+        </div>
+    </div>
+
+    <div id="reportModal" class="login-modal-overlay">
+        <div class="login-modal-content" style="max-width: 450px;">
+            <span class="close-report-modal close-login-modal">x</span>
+            <div class="modal-header">
+                <h2>Report Event</h2>
+                <p>Please select a reason for reporting this event.</p>
+            </div>
+            <div class="report-options" style="text-align: left; margin-top: 15px;">
+                <label><input type="radio" name="reportReason" value="1"> <span>Inappropriate and offensive image/picture used, unsuitable for the audience</span></label>
+                <label><input type="radio" name="reportReason" value="2"> <span>Brochure contains incorrect or objectionable content</span></label>
+                <label><input type="radio" name="reportReason" value="3"> <span>Event features controversial or unacceptable content</span></label>
+                <label><input type="radio" name="reportReason" value="4"> <span>Contact details are incorrect or unreliable</span></label>
+            </div>
+        </div>
+    </div>
+
+<script src="../js/Volunteer.js"></script>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      intent="wlc_volunteer"
+      chat-title="Eventify Assistant"
+      agent-id="1f801ece-cde6-4cb8-b578-15b7e608266e"
+      language-code="en"
+      chat-icon="assets/images/bot-logo.jpg.jpeg"
+    ></df-messenger>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
