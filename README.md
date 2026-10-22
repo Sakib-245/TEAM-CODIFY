@@ -1,7 +1,7 @@
 # Eventify — Unified Event Management Platform
 
 > A community-driven, frontend-only web platform connecting **event organizers**, **attendees**, and **volunteers** across India. Built by **Team Codify** as part of a collaborative multi-branch development workflow.
-
+hi
 ---
 
 ## Table of Contents
