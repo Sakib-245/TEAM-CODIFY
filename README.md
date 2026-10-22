@@ -3,7 +3,7 @@
 > A community-driven, frontend-only web platform connecting **event organizers**, **attendees**, and **volunteers** across India. Built by **Team Codify** as part of a collaborative multi-branch development workflow.
 
 ---
-Hellooooooooooo
+
 ## Table of Contents
 
 - [Overview](#overview)
